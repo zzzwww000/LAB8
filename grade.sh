@@ -32,8 +32,8 @@ fi
 # Run the tests using JUnit and report the grade
 
 java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > tests_results.txt
-$grabbed=`grep "FAILURES!!!" tests_results.txt`
-if [ -s $grabbed ]; then
+grep -o "FAILURES" tests_results.txt > grep_result.txt
+if [ -s grep_result.txt ]; then
     echo "Sorry, you failed the tests."
     cat tests_results.txt
 else
